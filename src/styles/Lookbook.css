@@ -67,4 +67,21 @@
   transform: translate(-50%, -50%);
   color: #666;
   font-size: 1.2rem;
+}
+
+.lookbook-feed {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lookbook-feed-item {
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
 } 

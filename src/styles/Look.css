@@ -22,7 +22,7 @@
 }
 
 .look-header {
-  position: fixed;
+  position: absolute;
   top: 20px;
   left: 0;
   right: 0;
@@ -49,7 +49,7 @@
 }
 
 .progress-container {
-  position: fixed;
+  position: absolute;
   bottom: 100px; /* Position above navigation */
   left: 0;
   width: 100%;
@@ -71,7 +71,7 @@
 }
 
 .product-card {
-  position: fixed;
+  position: absolute;
   bottom: 120px; /* Position above progress bar */
   left: 50%;
   transform: translateX(-50%);

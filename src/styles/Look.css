@@ -1,9 +1,13 @@
+:root {
+  --nav-height: 80px;
+}
+
 .look {
   width: 100%;
   height: 100vh;
   position: relative;
   overflow-y: auto;
-  padding-bottom: 80px; /* Space for navigation */
+  padding-bottom: var(--nav-height); /* Space for navigation */
 }
 
 .look-container {
@@ -50,7 +54,7 @@
 
 .progress-container {
   position: absolute;
-  bottom: 100px; /* Position above navigation */
+  bottom: calc(var(--nav-height) + 12px); /* 12px gap above nav */
   left: 0;
   width: 100%;
   height: 4px;
@@ -72,7 +76,7 @@
 
 .product-card {
   position: absolute;
-  bottom: 120px; /* Position above progress bar */
+  bottom: calc(var(--nav-height) + 36px); /* 36px gap above nav */
   left: 50%;
   transform: translateX(-50%);
   background-color: white;

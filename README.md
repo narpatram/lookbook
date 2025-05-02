@@ -72,6 +72,8 @@ The application uses a JSON-based data structure to define looks and their assoc
 
 ## Setup and Installation
 
+**Live App:** https://lookbook-kgvm.onrender.com
+
 1. **Prerequisites**
    - Node.js (v14 or higher)
    - npm or yarn

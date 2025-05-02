@@ -1,7 +1,44 @@
 .product-dot {
   position: absolute;
+  transform: translate(-50%, -50%);
   cursor: pointer;
-  z-index: 5;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.product-dot .dot {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.product-dot:hover .dot,
+.product-dot.paused .dot {
+  transform: scale(1.2);
+  background-color: #ff4d4d;
+  border-color: white;
+}
+
+.product-dot .product-label {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-dot.paused .product-label {
+  opacity: 1;
 }
 
 .dot {

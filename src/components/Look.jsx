@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import MediaViewer from './MediaViewer';
 import ProductAnnotation from './ProductAnnotation';
+import { getDisplayName } from '../utils/stringUtils';
 import '../styles/Look.css';
 
 const Look = ({ look, onNext, onPrev }) => {
@@ -112,12 +113,8 @@ const Look = ({ look, onNext, onPrev }) => {
     setProgress(0);
   };
 
-  const handleProgressBarMouseDown = () => {
-    setIsPaused(true);
-  };
-
-  const handleProgressBarMouseUp = () => {
-    setIsPaused(false);
+  const handleMediaAreaClick = () => {
+    setIsPaused(!isPaused);
   };
 
   const currentMedia = look.media[currentMediaIndex];
@@ -127,30 +124,32 @@ const Look = ({ look, onNext, onPrev }) => {
     <div className="look" {...handlers}>
       <div className="look-container">
         <div className="look-header">
-          <h2>{look.name}</h2>
+          <h2>{getDisplayName(look.folder, look.name)}</h2>
           <div className="media-counter">
             {currentMediaIndex + 1} / {look.media.length}
           </div>
         </div>
 
-        {currentMedia && (
-          <MediaViewer
-            media={currentMedia}
-            onNext={handleNextMedia}
-            onPrev={handlePrevMedia}
-            onVideoEnd={handleVideoEnd}
-            onVideoProgress={handleVideoProgress}
-          />
-        )}
+        <div 
+          className="media-area"
+          onClick={handleMediaAreaClick}
+        >
+          {currentMedia && (
+            <MediaViewer
+              media={{ ...currentMedia, folder: look.folder }}
+              onNext={handleNextMedia}
+              onPrev={handlePrevMedia}
+              onVideoEnd={handleVideoEnd}
+              onVideoProgress={handleVideoProgress}
+              isPaused={isPaused}
+            />
+          )}
+        </div>
         
         <div 
           className="progress-container"
           ref={progressRef}
           onClick={handleProgressBarClick}
-          onMouseDown={handleProgressBarMouseDown}
-          onMouseUp={handleProgressBarMouseUp}
-          onTouchStart={handleProgressBarMouseDown}
-          onTouchEnd={handleProgressBarMouseUp}
         >
           {look.media.map((_, index) => (
             <div 
@@ -174,11 +173,12 @@ const Look = ({ look, onNext, onPrev }) => {
           ))}
         </div>
 
-        {isImage && look.products.map((product) => (
+        {isImage && currentMedia.products && currentMedia.products.length > 0 && currentMedia.products.map((product) => (
           <ProductAnnotation
             key={product.id}
             product={product}
             onClick={() => handleProductClick(product)}
+            isPaused={isPaused}
           />
         ))}
 

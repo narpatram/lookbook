@@ -1,9 +1,9 @@
 import '../styles/ProductAnnotation.css';
 
-const ProductAnnotation = ({ product, onClick }) => {
+const ProductAnnotation = ({ product, onClick, isPaused }) => {
   return (
     <div
-      className="product-dot"
+      className={`product-dot ${isPaused ? 'paused' : ''}`}
       style={{
         left: `${product.x}%`,
         top: `${product.y}%`,
@@ -11,6 +11,7 @@ const ProductAnnotation = ({ product, onClick }) => {
       onClick={onClick}
     >
       <div className="dot" />
+      {isPaused && <div className="product-label">{product.name}</div>}
     </div>
   );
 };

@@ -1,22 +1,38 @@
-import { useState } from 'react';
-import { FaChevronLeft, FaChevronRight, FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
+import { useState, useEffect, useRef } from 'react';
+import { FaChevronLeft, FaChevronRight, FaVolumeMute, FaVolumeUp, FaPause, FaPlay } from 'react-icons/fa';
 import '../styles/MediaViewer.css';
 
-const MediaViewer = ({ media, onNext, onPrev, onVideoEnd, onVideoProgress }) => {
+const MediaViewer = ({ media, onNext, onPrev, onVideoEnd, onVideoProgress, isPaused }) => {
   const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (media.type === 'video' && videoRef.current) {
+      if (isPaused) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+    }
+  }, [isPaused, media.type]);
 
   const handleMuteToggle = () => {
     setIsMuted(!isMuted);
   };
 
+  const getMediaUrl = () => {
+    return `/looks/${media.folder}/${media.url}`;
+  };
+
   return (
     <div className="media-viewer">
       {media.type === 'image' ? (
-        <img src={media.url} alt="Look" className="media-content" />
+        <img src={getMediaUrl()} alt="Look" className="media-content" />
       ) : (
         <div className="video-container">
           <video
-            src={media.url}
+            ref={videoRef}
+            src={getMediaUrl()}
             className="media-content"
             autoPlay
             loop={false}
@@ -25,9 +41,14 @@ const MediaViewer = ({ media, onNext, onPrev, onVideoEnd, onVideoProgress }) => 
             onEnded={onVideoEnd}
             onTimeUpdate={onVideoProgress}
           />
-          <button className="mute-button" onClick={handleMuteToggle}>
-            {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
-          </button>
+          <div className="video-controls">
+            <button className="mute-button" onClick={handleMuteToggle}>
+              {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+            </button>
+            <button className="play-pause-button">
+              {isPaused ? <FaPause /> : <FaPlay />}
+            </button>
+          </div>
         </div>
       )}
       

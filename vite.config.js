@@ -11,5 +11,11 @@ export default defineConfig({
     rollupOptions: {
       external: ['react-router-dom']
     }
+  },
+  preview: {
+    host: true,
+    port: 4173,
+    strictPort: true,
+    allowedHosts: ['lookbook-kgvm.onrender.com']
   }
 })

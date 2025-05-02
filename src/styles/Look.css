@@ -1,0 +1,104 @@
+.look {
+  width: 100%;
+  height: calc(100vh - 80px); /* Subtract navigation height */
+  position: relative;
+  margin-bottom: 80px; /* Add space for navigation */
+}
+
+.look-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.look-header {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.look-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.media-counter {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.progress-container {
+  position: absolute;
+  bottom: 20px; /* Increased from 0 to 20px */
+  left: 0;
+  width: 100%;
+  height: 4px;
+  display: flex;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.progress-segment {
+  height: 100%;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.progress {
+  height: 100%;
+  transition: width 0.05s linear;
+}
+
+.product-card {
+  position: absolute;
+  bottom: 40px; /* Increased from 20px to 40px */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  max-width: 90%;
+}
+
+.product-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.product-card p {
+  margin: 0 0 15px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.product-card button {
+  margin-right: 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.product-card button:first-child {
+  background-color: #000;
+  color: white;
+}
+
+.product-card button:last-child {
+  background-color: #f0f0f0;
+  color: #333;
+} 

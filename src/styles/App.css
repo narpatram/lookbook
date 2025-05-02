@@ -1,0 +1,26 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.page {
+  flex: 1;
+  padding: 20px;
+  padding-bottom: 80px; /* Space for navigation bar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #666;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+/* Ensure the Lookbook takes full height */
+.lookbook {
+  height: 100%;
+  width: 100%;
+  position: relative;
+} 

@@ -1,15 +1,37 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
+import { AnimatePresence, motion } from 'framer-motion';
 import MediaViewer from './MediaViewer';
 import ProductAnnotation from './ProductAnnotation';
 import { getDisplayName } from '../utils/stringUtils';
 import '../styles/Look.css';
 
-const Look = ({ look, onNext, onPrev }) => {
+const swipeVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? 300 : -300,
+    opacity: 0,
+    position: 'absolute',
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    position: 'relative',
+    transition: { x: { type: 'spring', stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } },
+  },
+  exit: (direction) => ({
+    x: direction < 0 ? 300 : -300,
+    opacity: 0,
+    position: 'absolute',
+    transition: { x: { type: 'spring', stiffness: 300, damping: 30 }, opacity: { duration: 0.2 } },
+  }),
+};
+
+const Look = ({ look }) => {
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
   const [showProductCard, setShowProductCard] = useState(null);
   const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
   const progressRef = useRef(null);
   const timerRef = useRef(null);
 
@@ -17,6 +39,7 @@ const Look = ({ look, onNext, onPrev }) => {
     setCurrentMediaIndex(0);
     setProgress(0);
     setIsPaused(false);
+    setDirection(0);
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
@@ -51,6 +74,7 @@ const Look = ({ look, onNext, onPrev }) => {
         if (newProgress >= 100) {
           clearInterval(timerRef.current);
           timerRef.current = null;
+          setDirection(1);
           setCurrentMediaIndex((prevIndex) => (prevIndex + 1) % look.media.length);
         }
       }, 16);
@@ -70,6 +94,7 @@ const Look = ({ look, onNext, onPrev }) => {
       timerRef.current = null;
     }
     setProgress(100);
+    setDirection(1);
     setCurrentMediaIndex((prevIndex) => (prevIndex + 1) % look.media.length);
   };
 
@@ -89,6 +114,7 @@ const Look = ({ look, onNext, onPrev }) => {
       clearInterval(timerRef.current);
       timerRef.current = null;
     }
+    setDirection(1);
     setCurrentMediaIndex((prev) => (prev + 1) % look.media.length);
   };
 
@@ -97,6 +123,7 @@ const Look = ({ look, onNext, onPrev }) => {
       clearInterval(timerRef.current);
       timerRef.current = null;
     }
+    setDirection(-1);
     setCurrentMediaIndex((prev) => (prev - 1 + look.media.length) % look.media.length);
   };
 
@@ -108,6 +135,7 @@ const Look = ({ look, onNext, onPrev }) => {
     const rect = progressRef.current.getBoundingClientRect();
     const clickPosition = (e.clientX - rect.left) / rect.width;
     const newIndex = Math.floor(clickPosition * look.media.length);
+    setDirection(newIndex > currentMediaIndex ? 1 : -1);
     setCurrentMediaIndex(newIndex);
     setProgress(0);
   };
@@ -133,16 +161,29 @@ const Look = ({ look, onNext, onPrev }) => {
           className="media-area"
           onClick={handleMediaAreaClick}
         >
-          {currentMedia && (
-            <MediaViewer
-              media={{ ...currentMedia, folder: look.folder }}
-              onNext={handleNextMedia}
-              onPrev={handlePrevMedia}
-              onVideoEnd={handleVideoEnd}
-              onVideoProgress={handleVideoProgress}
-              isPaused={isPaused}
-            />
-          )}
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={currentMediaIndex}
+              custom={direction}
+              variants={swipeVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+              style={{ width: '100%', height: '100%' }}
+            >
+              {currentMedia && (
+                <MediaViewer
+                  media={{ ...currentMedia, folder: look.folder }}
+                  onNext={handleNextMedia}
+                  onPrev={handlePrevMedia}
+                  onVideoEnd={handleVideoEnd}
+                  onVideoProgress={handleVideoProgress}
+                  isPaused={isPaused}
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
         </div>
         
         <div 

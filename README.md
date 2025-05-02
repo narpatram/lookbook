@@ -79,7 +79,7 @@ The application uses a JSON-based data structure to define looks and their assoc
 2. **Installation**
    ```bash
    # Clone the repository
-   git clone <repository-url>
+   git clone https://github.com/narpatram/lookbook.git
 
    # Navigate to the project directory
    cd lookbook

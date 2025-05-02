@@ -4,14 +4,14 @@ import Look from './Look';
 import '../styles/Lookbook.css';
 
 // Import media for look1
-import look1Image1 from '../assets/looks/look1/image1.jpg';
-import look1Image2 from '../assets/looks/look1/image2.jpeg';
-import look1Video1 from '../assets/looks/look1/video1.mp4';
+const look1Image1 = '/looks/look1/image1.jpg';
+const look1Image2 = '/looks/look1/image2.jpeg';
+const look1Video1 = '/looks/look1/video1.mp4';
 
 // Import media for look2
-import look2Image1 from '../assets/looks/look2/image1.jpg';
-import look2Image2 from '../assets/looks/look2/image2.jpg';
-import look2Video1 from '../assets/looks/look2/video1.mp4';
+const look2Image1 = '/looks/look2/image1.jpg';
+const look2Image2 = '/looks/look2/image2.jpg';
+const look2Video1 = '/looks/look2/video1.mp4';
 
 const Lookbook = () => {
   const [currentLookIndex, setCurrentLookIndex] = useState(0);

@@ -13,7 +13,6 @@ const Look = ({ look, onNext, onPrev }) => {
   const progressRef = useRef(null);
   const timerRef = useRef(null);
 
-  // Reset media index when look changes
   useEffect(() => {
     setCurrentMediaIndex(0);
     setProgress(0);
@@ -54,7 +53,7 @@ const Look = ({ look, onNext, onPrev }) => {
           timerRef.current = null;
           setCurrentMediaIndex((prevIndex) => (prevIndex + 1) % look.media.length);
         }
-      }, 16); // ~60fps for smooth animation
+      }, 16);
     }
   };
 

@@ -1,7 +1,6 @@
 export const getDisplayName = (folder, name) => {
   if (name) return name;
   
-  // Convert folder name to camelCase
   return folder
     .split('_')
     .map((word, index) => 

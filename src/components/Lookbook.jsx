@@ -9,7 +9,6 @@ const Lookbook = () => {
   const [looks, setLooks] = useState([]);
 
   useEffect(() => {
-    // Load looks from the JSON file
     setLooks(looksData.looks);
   }, []);
 

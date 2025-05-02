@@ -1,13 +1,14 @@
 .look {
   width: 100%;
-  height: calc(100vh - 80px); /* Subtract navigation height */
+  height: 100vh;
   position: relative;
-  margin-bottom: 80px; /* Add space for navigation */
+  overflow-y: auto;
+  padding-bottom: 80px; /* Space for navigation */
 }
 
 .look-container {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   position: relative;
 }
 
@@ -21,7 +22,7 @@
 }
 
 .look-header {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 0;
   right: 0;
@@ -48,8 +49,8 @@
 }
 
 .progress-container {
-  position: absolute;
-  bottom: 20px;
+  position: fixed;
+  bottom: 100px; /* Position above navigation */
   left: 0;
   width: 100%;
   height: 4px;
@@ -70,8 +71,8 @@
 }
 
 .product-card {
-  position: absolute;
-  bottom: 40px;
+  position: fixed;
+  bottom: 120px; /* Position above progress bar */
   left: 50%;
   transform: translateX(-50%);
   background-color: white;

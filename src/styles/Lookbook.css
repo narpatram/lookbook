@@ -78,7 +78,7 @@
 }
 
 .lookbook-feed-item {
-  height: 100vh;
+  height: 92vh;
   width: 100vw;
   scroll-snap-align: start;
   display: flex;

@@ -2,16 +2,16 @@
   "looks": [
     {
       "id": 1,
-      "name": "",
+      "name": "Summer Collection",
       "folder": "summer_collection",
       "media": [
         { 
           "type": "image", 
           "url": "image1.jpg",
           "products": [
-            { "id": 1, "name": "Summer Dress", "price": 99.99, "x": 30, "y": 40 },
-            { "id": 2, "name": "Sunglasses", "price": 149.99, "x": 60, "y": 70 },
-            { "id": 3, "name": "Shoes", "price": 149.99, "x": 60, "y": 90 }
+            { "id": 1, "name": "Summer Dress", "price": 99.99, "x": 30, "y": 40, "thumbnail": "summer-dress-thumb.jpg", "description": "Light cotton summer dress" },
+            { "id": 2, "name": "Sunglasses", "price": 149.99, "x": 60, "y": 70, "thumbnail": "sunglasses-thumb.jpg", "description": "Trendy UV protection" },
+            { "id": 3, "name": "Shoes", "price": 149.99, "x": 60, "y": 90, "thumbnail": "shoes-thumb.jpg", "description": "Comfy summer slip-ons" }
           ]
         },
         { 
@@ -23,9 +23,9 @@
           "type": "image", 
           "url": "image2.jpeg",
           "products": [
-            { "id": 1, "name": "Summer Dress", "price": 99.99, "x": 45, "y": 50 },
-            { "id": 2, "name": "Sunglasses", "price": 149.99, "x": 70, "y": 30 },
-            { "id": 4, "name": "Necklace", "price": 149.99, "x": 60, "y": 90 }
+            { "id": 1, "name": "Summer Dress", "price": 99.99, "x": 45, "y": 50, "thumbnail": "summer-dress-thumb.jpg", "description": "Light cotton summer dress" },
+            { "id": 2, "name": "Sunglasses", "price": 149.99, "x": 70, "y": 30, "thumbnail": "sunglasses-thumb.jpg", "description": "Trendy UV protection" },
+            { "id": 4, "name": "Necklace", "price": 149.99, "x": 60, "y": 90, "thumbnail": "necklace-thumb.jpg", "description": "Elegant gold necklace" }
           ]
         }
       ]
@@ -39,8 +39,8 @@
           "type": "image", 
           "url": "image1.jpg",
           "products": [
-            { "id": 5, "name": "Winter Coat", "price": 199.99, "x": 50, "y": 30 },
-            { "id": 6, "name": "Wool Scarf", "price": 79.99, "x": 40, "y": 60 }
+            { "id": 5, "name": "Winter Coat", "price": 199.99, "x": 50, "y": 30, "thumbnail": "winter-coat-thumb.jpg", "description": "Warm woolen winter coat" },
+            { "id": 6, "name": "Wool Scarf", "price": 79.99, "x": 40, "y": 60, "thumbnail": "scarf-thumb.jpg", "description": "Soft woolen scarf" }
           ]
         },
         { 
@@ -52,8 +52,8 @@
           "type": "image", 
           "url": "image2.jpg",
           "products": [
-            { "id": 5, "name": "Winter Coat", "price": 199.99, "x": 35, "y": 45 },
-            { "id": 6, "name": "Wool Scarf", "price": 79.99, "x": 60, "y": 20 }
+            { "id": 5, "name": "Winter Coat", "price": 199.99, "x": 35, "y": 45, "thumbnail": "winter-coat-thumb.jpg", "description": "Warm woolen winter coat" },
+            { "id": 6, "name": "Wool Scarf", "price": 79.99, "x": 60, "y": 20, "thumbnail": "scarf-thumb.jpg", "description": "Soft woolen scarf" }
           ]
         }
       ]
@@ -66,8 +66,8 @@
           "type": "image", 
           "url": "image1.jpg",
           "products": [
-            { "id": 7, "name": "Blazer", "price": 199.99, "x": 50, "y": 30 },
-            { "id": 8, "name": "Sunglasses", "price": 79.99, "x": 40, "y": 60 }
+            { "id": 7, "name": "Blazer", "price": 199.99, "x": 50, "y": 30, "thumbnail": "blazer-thumb.jpg", "description": "Classic navy blue blazer" },
+            { "id": 8, "name": "Sunglasses", "price": 79.99, "x": 40, "y": 60, "thumbnail": "sunglasses-thumb.jpg", "description": "Trendy UV protection" }
           ]
         }
       ]

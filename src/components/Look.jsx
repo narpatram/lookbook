@@ -3,6 +3,7 @@ import { useSwipeable } from 'react-swipeable';
 import { AnimatePresence, motion } from 'framer-motion';
 import MediaViewer from './MediaViewer';
 import ProductAnnotation from './ProductAnnotation';
+import ProductCard from './ProductCard';
 import { getDisplayName } from '../utils/stringUtils';
 import '../styles/Look.css';
 
@@ -223,14 +224,12 @@ const Look = ({ look }) => {
         ))}
 
         {showProductCard && (
-          <div className="product-card">
-            <h3>{showProductCard.name}</h3>
-            <p>${showProductCard.price}</p>
-            <button onClick={() => window.location.href = `/product/${showProductCard.id}`}>
-              Shop Now
-            </button>
-            <button onClick={() => setShowProductCard(null)}>Close</button>
-          </div>
+          <ProductCard
+            product={showProductCard}
+            folder={look.folder}
+            onShop={() => window.location.href = `/product/${showProductCard.id}`}
+            onClose={() => setShowProductCard(null)}
+          />
         )}
       </div>
     </div>

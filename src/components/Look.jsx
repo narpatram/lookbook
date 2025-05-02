@@ -148,6 +148,14 @@ const Look = ({ look }) => {
   const currentMedia = look.media[currentMediaIndex];
   const isImage = currentMedia?.type === 'image';
 
+  useEffect(() => {
+    if (showProductCard) {
+      setIsPaused(true);
+    } else {
+      setIsPaused(false);
+    }
+  }, [showProductCard]);
+
   return (
     <div className="look" {...handlers}>
       <div className="look-container">

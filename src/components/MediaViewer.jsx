@@ -13,11 +13,22 @@ const MediaViewer = ({ media, onNext, onPrev, onVideoEnd, onVideoProgress, isPau
       } else {
         videoRef.current.play();
       }
+      videoRef.current.muted = isMuted;
     }
-  }, [isPaused, media.type]);
+  }, [isPaused, media.type, isMuted]);
 
   const handleMuteToggle = () => {
     setIsMuted(!isMuted);
+  };
+
+  const handlePlayPause = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
+    }
   };
 
   const getMediaUrl = () => {
@@ -45,7 +56,7 @@ const MediaViewer = ({ media, onNext, onPrev, onVideoEnd, onVideoProgress, isPau
             <button className="mute-button" onClick={handleMuteToggle}>
               {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
             </button>
-            <button className="play-pause-button">
+            <button className="play-pause-button" onClick={handlePlayPause}>
               {isPaused ? <FaPause /> : <FaPlay />}
             </button>
           </div>
